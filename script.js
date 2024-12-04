@@ -104,3 +104,57 @@ function showLoveMessage() {
    startHeartAnimation();
 }
 
+function createSparkle() {
+   const sparkleContainer = document.querySelector('.heart-container');
+   const sparkle = document.createElement('div');
+   sparkle.classList.add('sparkle');
+
+   // Posisi acak di sekitar teks
+   sparkle.style.top = `${Math.random() * 100}%`;
+   sparkle.style.left = `${Math.random() * 100}%`;
+
+   // Ukuran acak
+   const size = Math.random() * 5 + 5; // Antara 5px dan 10px
+   sparkle.style.width = `${size}px`;
+   sparkle.style.height = `${size}px`;
+
+   sparkleContainer.appendChild(sparkle);
+
+   // Hapus sparkle setelah beberapa saat
+   setTimeout(() => {
+       sparkle.remove();
+   }, 1500);
+}
+
+setInterval(createSparkle, 300); // Tambahkan sparkle setiap 0.3 detik
+
+function createClickEffect(event) {
+   const particleContainer = document.createElement('div');
+   particleContainer.className = 'particle-container';
+   document.body.appendChild(particleContainer);
+
+   for (let i = 0; i < 10; i++) {
+       const particle = document.createElement('div');
+       particle.className = 'particle';
+       particle.style.left = `${event.clientX}px`;
+       particle.style.top = `${event.clientY}px`;
+
+       particleContainer.appendChild(particle);
+
+       const angle = Math.random() * 2 * Math.PI;
+       const distance = Math.random() * 100;
+
+       const x = Math.cos(angle) * distance;
+       const y = Math.sin(angle) * distance;
+
+       particle.style.transform = `translate(${x}px, ${y}px)`;
+       particle.style.opacity = '0';
+
+       setTimeout(() => particle.remove(), 1000);
+   }
+}
+
+document.getElementById('showMessage').addEventListener('click', createClickEffect);
+message.style.display = "block";
+
+
