@@ -1,0 +1,53 @@
+body {
+   font-family: Arial, sans-serif;
+   text-align: center;
+   background-color: #ffe6e6;
+   color: #ff3366;
+   margin: 0;
+   padding: 0;
+}
+
+.container {
+   margin-top: 20vh;
+}
+
+button {
+   background-color: #ff3366;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   font-size: 16px;
+   border-radius: 8px;
+   cursor: pointer;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+   background-color: #ff6699;
+}
+
+.hidden {
+   display: none;
+}
+
+#loveMessage {
+   margin-top: 20px;
+   font-size: 18px;
+}
+
+@keyframes slideUp {
+   0% {
+       transform: translateY(100%);
+       opacity: 0;
+   }
+   100% {
+       transform: translateY(0);
+       opacity: 1;
+   }
+}
+
+#loveMessage p {
+   animation: slideUp 2s ease-out;
+   opacity: 0;
+   animation-fill-mode: forwards; /* Memastikan teks tetap di tempat setelah animasi selesai */
+}
