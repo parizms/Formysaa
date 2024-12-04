@@ -26,3 +26,29 @@ function showLoveMessage() {
        console.error("Failed to play music:", error);
    });
 }
+
+
+function createHeart() {
+   const heartContainer = document.querySelector('.heart-container');
+   const heart = document.createElement('div');
+   heart.classList.add('heart');
+
+   // Set posisi horizontal acak
+   heart.style.left = `${Math.random() * 100}%`;
+
+   // Set ukuran hati acak
+   const size = Math.random() * 10 + 10; // Antara 10px dan 20px
+   heart.style.width = `${size}px`;
+   heart.style.height = `${size}px`;
+
+   // Tambahkan hati ke container
+   heartContainer.appendChild(heart);
+
+   // Hapus hati setelah animasi selesai
+   setTimeout(() => {
+       heart.remove();
+   }, 5000);
+}
+
+// Buat hati secara berkala
+setInterval(createHeart, 500); // Setiap 0.5 detik
